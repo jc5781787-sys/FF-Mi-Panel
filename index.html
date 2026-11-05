@@ -4,56 +4,63 @@ index.html.
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FF Mi Panel</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090909;color:white;font-family:Arial;text-align:center;padding:20px}
-h1{color:#ff3030;font-size:30px}
-p{color:#ccc}
-.panel{max-width:430px;margin:auto}
-.card{background:#191919;border:1px solid #ff3030;border-radius:14px;padding:18px;margin:15px 0}
-button{width:100%;padding:16px;margin:8px 0;border:0;border-radius:10px;background:#e51d2a;color:white;font-size:17px;font-weight:bold}
-.info{color:#fff;line-height:1.7}
-.small{font-size:12px;color:#aaa}
+body{margin:0;background:#080808;color:white;font-family:Arial;text-align:center;padding:20px}
+h1{color:#ff2525}
+.card{background:#191919;border:1px solid #ff2525;border-radius:15px;padding:18px;margin:15px auto;max-width:430px}
+button{background:#e71927;color:white;border:0;border-radius:10px;padding:14px;font-weight:bold;font-size:15px;width:100%;margin:6px 0}
+#menu{display:none;position:fixed;right:10px;top:30%;width:190px;background:#151515;border:2px solid #ff2525;border-radius:15px;padding:12px;z-index:10}
+#abrir{position:fixed;right:0;top:45%;width:55px;z-index:11}
+#resultado{line-height:1.8;color:white}
+small{color:#aaa}
 </style>
 </head>
 <body>
-<div class="panel">
 <h1>🔥 FF MI PANEL 🔥</h1>
-<p>Panel auxiliar de configuración</p>
+<p>iPhone 15 Pro Max</p>
 
 <div class="card">
-<h2 id="estado">Panel cerrado</h2>
-<button onclick="activar()">ACTIVAR PANEL</button>
+<h2 id="estado">PANEL LISTO</h2>
+<button onclick="document.getElementById('estado').innerText='PANEL ABIERTO'">ACTIVAR PANEL</button>
+</div>
+
+<button id="abrir" onclick="menu()">☰</button>
+
+<div id="menu">
+<h3 style="color:#ff3030">FF MENÚ</h3>
+<button onclick="mostrar('sensibilidad')">🎯 SENSIBILIDAD</button>
+<button onclick="mostrar('mira')">🔴 MIRA</button>
+<button onclick="mostrar('dedos')">🖐️ 4 DEDOS</button>
+<button onclick="mostrar('rendimiento')">⚡ RENDIMIENTO</button>
+<button onclick="mostrar('pantalla')">📱 PANTALLA</button>
+<button onclick="menu()">CERRAR</button>
 </div>
 
 <div class="card">
-<button onclick="mostrar('sensibilidad')">SENSIBILIDAD</button>
-<button onclick="mostrar('dedos')">CONTROLES 4 DEDOS</button>
-<button onclick="mostrar('pantalla')">PANTALLA 120 HZ</button>
-<div id="resultado" class="info">Selecciona una configuración.</div>
+<h3>CONFIGURACIÓN</h3>
+<div id="resultado">Selecciona una opción del menú.</div>
 </div>
 
-<p class="small">Las opciones son recomendaciones. Debes aplicarlas manualmente dentro de Free Fire.</p>
-</div>
+<small>Panel auxiliar. Los ajustes se aplican manualmente en Free Fire.</small>
 
 <script>
-function activar(){
-document.getElementById("estado").innerText="🔥 PANEL ABIERTO 🔥";
+function menu(){
+let m=document.getElementById('menu');
+m.style.display=m.style.display==='block'?'none':'block';
 }
-function mostrar(opcion){
-let texto="";
-if(opcion==="sensibilidad"){
-texto="<h3>SENSIBILIDAD RECOMENDADA</h3>General: 185<br> Punto rojo: 180<br> Mira 2X: 175<br> Mira 4X: 165<br> Mira francotirador: 90<br> Cámara: 150";
-}
-if(opcion==="dedos"){
-texto="<h3>CONTROLES DE 4 DEDOS</h3>Índice izquierdo: disparo<br>Índice derecho: mira y apuntar<br>Pulgar izquierdo: movimiento<br>Pulgar derecho: cámara y saltar";
-}
-if(opcion==="pantalla"){
-texto="<h3>PANTALLA 120 HZ</h3>Activa la frecuencia ProMotion en Ajustes de pantalla de tu iPhone. Dentro de Free Fire selecciona la mayor tasa de cuadros disponible.";
-}
-document.getElementById("resultado").innerHTML=texto;
+function mostrar(op){
+let r=document.getElementById('resultado');
+let datos={
+sensibilidad:'<h3>SENSIBILIDAD</h3>General: 185<br>Punto rojo: 180<br>Mira 2X: 175<br>Mira 4X: 165<br>Francotirador: 90<br>Cámara: 150',
+mira:'<h3>MIRA Y APUNTADO</h3>Prueba la mira de punto rojo y ajusta la precisión desde los controles del juego.',
+dedos:'<h3>CONTROLES DE 4 DEDOS</h3>Índice izquierdo: disparo<br>Índice derecho: mira y apuntar<br>Pulgar izquierdo: movimiento<br>Pulgar derecho: cámara y salto',
+rendimiento:'<h3>RENDIMIENTO</h3>Cierra aplicaciones que no uses. Mantén el iPhone fresco y usa la tasa de cuadros más alta disponible en el juego.',
+pantalla:'<h3>PANTALLA</h3>El iPhone 15 Pro Max tiene ProMotion de hasta 120 Hz. Activa la opción de cuadros altos disponible en Free Fire.'
+};
+r.innerHTML=datos[op];
 }
 </script>
 </body>
