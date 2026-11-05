@@ -4,76 +4,57 @@ index.html.
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
-<title>FF MI PANEL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Mi Panel</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  background: #080808;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-}
-h1 { color: #ff2020; }
-.panel {
-  background: #191919;
-  border: 2px solid #ff2020;
-  border-radius: 18px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 400px;
-}
-button {
-  background: #e00000;
-  color: white;
-  border: 0;
-  border-radius: 12px;
-  padding: 15px;
-  width: 100%;
-  margin: 9px 0;
-  font-size: 16px;
-  font-weight: bold;
-}
-.info {
-  color: #aaa;
-  font-size: 13px;
-}
+*{box-sizing:border-box}
+body{margin:0;background:#090909;color:white;font-family:Arial;text-align:center;padding:20px}
+h1{color:#ff3030;font-size:30px}
+p{color:#ccc}
+.panel{max-width:430px;margin:auto}
+.card{background:#191919;border:1px solid #ff3030;border-radius:14px;padding:18px;margin:15px 0}
+button{width:100%;padding:16px;margin:8px 0;border:0;border-radius:10px;background:#e51d2a;color:white;font-size:17px;font-weight:bold}
+.info{color:#fff;line-height:1.7}
+.small{font-size:12px;color:#aaa}
 </style>
 </head>
 <body>
-
+<div class="panel">
 <h1>🔥 FF MI PANEL 🔥</h1>
-<p>FREE FIRE CONFIGURATION</p>
+<p>Panel auxiliar de configuración</p>
 
-<div class="panel">
-<h2>CONTROL PRINCIPAL</h2>
+<div class="card">
+<h2 id="estado">Panel cerrado</h2>
 <button onclick="activar()">ACTIVAR PANEL</button>
-<p id="estado">Estado: Desactivado</p>
 </div>
 
-<div class="panel">
-<h2>CONFIGURACIONES</h2>
-<button onclick="mostrar('Sensibilidad')">SENSIBILIDAD</button>
-<button onclick="mostrar('Controles de 4 dedos')">4 DEDOS</button>
-<button onclick="mostrar('Configuración de pantalla')">PANTALLA 120 HZ</button>
-<p id="resultado">Selecciona una configuración</p>
+<div class="card">
+<button onclick="mostrar('sensibilidad')">SENSIBILIDAD</button>
+<button onclick="mostrar('dedos')">CONTROLES 4 DEDOS</button>
+<button onclick="mostrar('pantalla')">PANTALLA 120 HZ</button>
+<div id="resultado" class="info">Selecciona una configuración.</div>
 </div>
 
-<p class="info">FF MI PANEL - VERSION 2.0</p>
-<p class="info">Configuraciones informativas. Los cambios se realizan dentro del juego.</p>
+<p class="small">Las opciones son recomendaciones. Debes aplicarlas manualmente dentro de Free Fire.</p>
+</div>
 
 <script>
-function activar() {
-  document.getElementById("estado").textContent =
-  "Estado: Panel abierto";
+function activar(){
+document.getElementById("estado").innerText="🔥 PANEL ABIERTO 🔥";
 }
-function mostrar(nombre) {
-  document.getElementById("resultado").textContent =
-  "Configuración seleccionada: " + nombre;
+function mostrar(opcion){
+let texto="";
+if(opcion==="sensibilidad"){
+texto="<h3>SENSIBILIDAD RECOMENDADA</h3>General: 185<br> Punto rojo: 180<br> Mira 2X: 175<br> Mira 4X: 165<br> Mira francotirador: 90<br> Cámara: 150";
+}
+if(opcion==="dedos"){
+texto="<h3>CONTROLES DE 4 DEDOS</h3>Índice izquierdo: disparo<br>Índice derecho: mira y apuntar<br>Pulgar izquierdo: movimiento<br>Pulgar derecho: cámara y saltar";
+}
+if(opcion==="pantalla"){
+texto="<h3>PANTALLA 120 HZ</h3>Activa la frecuencia ProMotion en Ajustes de pantalla de tu iPhone. Dentro de Free Fire selecciona la mayor tasa de cuadros disponible.";
+}
+document.getElementById("resultado").innerHTML=texto;
 }
 </script>
-
 </body>
 </html>
